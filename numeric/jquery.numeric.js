@@ -238,7 +238,13 @@ $.fn.numeric.blur = function()
 
 $.fn.removeNumeric = function()
 {
-	return this.data("numeric.decimal", null).data("numeric.negative", null).data("numeric.callback", null).unbind("keypress", $.fn.numeric.keypress).unbind("blur", $.fn.numeric.blur);
+	return this
+		.removeData('numeric.decimal')
+		.removeData('numeric.negative')
+		.removeData('numeric.callback')
+		.unbind('keypress', $.fn.numeric.keypress)
+		.unbind('blur', $.fn.numeric.blur)
+		.unbind('keyup', $.fn.numeric.keyup);
 };
 
 // Based on code from http://javascript.nwbox.com/cursor_position/ (Diego Perini <dperini@nwbox.com>)
